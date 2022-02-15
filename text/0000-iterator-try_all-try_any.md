@@ -69,7 +69,7 @@ fn try_all<F, R>(&mut self, mut f: F) -> R
 where
 	Self: Sized,
 	F: FnMut(Self::Item) -> R,
-	R: Try<bool>,
+	R: Try<Output = bool>,
 {
 	for item in self {
 		if !f(item)? {
@@ -83,7 +83,7 @@ fn try_any<F, R>(&mut self, mut f: F) -> R
 where
 	Self: Sized,
 	F: FnMut(Self::Item) -> R,
-	R: Try<bool>,
+	R: Try<Output = bool>,
 {
 	for item in self {
 		if f(item)? {
